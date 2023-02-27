@@ -1,26 +1,47 @@
 extends Area2D
 
-#Player speed
-export var speed = 300 
+#Signal for when player is hit
+#signal hit
 
+export var speed = 400 # Player speed
+var screen_size # screensize
+signal hit
 
+#Runs once
 func _ready():
-	 pass
-	
-func _Process(delta):
-	var direction = Vector2.ZERO
-	
-	if Input.is_action_pressed("move_left"):
-		direction.x -= 1
+	screen_size = get_viewport_rect().size
+	hide()
+
+
+#Runs through continously
+func _process(delta):
+	var velocity = Vector2.ZERO # Player movement
 	if Input.is_action_pressed("move_right"):
-		direction.x += 1
-	if Input.is_action_pressed("move_up"):
-		direction.y -= 1
+		velocity.x += 1
+	if Input.is_action_pressed("move_left"):
+		velocity.x -= 1
 	if Input.is_action_pressed("move_down"):
-		direction.y += 1
-		
-	if direction.length > 1:
-		direction = direction.normalized()
+		velocity.y += 1
+	if Input.is_action_pressed("move_up"):
+		velocity.y -= 1
+
+	#Normalizes vectors since diagonal vectors are longer than horizontal ones
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * speed
+		#$AnimatedSprite.play()
+	else:
+		#$AnimatedSprite.stop()
+		pass
+
+
+
+	position += velocity * delta
+	position.x = clamp(position.x, 0, screen_size.x)
+	position.y = clamp(position.y, 0, screen_size.y)
+
+
+func _on_Area2D_body_entered(_body):
 	
 	
-	position += direction * speed * delta
+	emit_signal("hit")
+	$CollisionShape2D.disabled = true
