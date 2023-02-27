@@ -15,22 +15,21 @@ animations = [ {
 radius = 22.0
 
 [node name="Mob" type="RigidBody2D"]
-position = Vector2( 32, 47 )
+position = Vector2( 34, 44 )
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-maxSpeed = 350
-minSpeed = 150
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 2, 4 )
 frames = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( 31, 41 )
+position = Vector2( 0.5, 1.5 )
+scale = Vector2( 1.75, 1.95 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )

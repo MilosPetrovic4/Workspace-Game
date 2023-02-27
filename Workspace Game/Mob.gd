@@ -1,12 +1,9 @@
 extends RigidBody2D
 
 
-export (int) var maxSpeed
-export (int) var minSpeed
+export (int) var maxSpeed = 350
+export (int) var minSpeed = 150
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
 
 

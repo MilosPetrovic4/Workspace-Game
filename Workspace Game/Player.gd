@@ -6,6 +6,7 @@ extends Area2D
 export var speed = 400 # Player speed
 var screen_size # screensize
 signal hit
+signal taskComplete 
 
 #Runs once
 func _ready():
@@ -40,8 +41,29 @@ func _process(delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 
 
-func _on_Area2D_body_entered(_body):
+func _on_Area2D_body_entered(body):
+	
+#	if body.get_name() == "CollisionShape2D":
+#		emit_signal("hit")
+#		$CollisionShape2D.disabled = true
+#	elif body.get_name() == "CollisionPolygon2D":
+#		emit_signal("taskComplete")
+
 	
 	
-	emit_signal("hit")
-	$CollisionShape2D.disabled = true
+	if body.get_name() == "Task":
+		emit_signal("taskComplete")
+		print(body.get_name() )
+		
+
+
+#	if body extends RigidBody2D:
+#		emit_signal("hit")
+#		$CollisionShape2D.disabled = true
+#	elif body extends StaticBody2D:
+#		emit_signal("taskComplete")
+		
+		
+
+
+

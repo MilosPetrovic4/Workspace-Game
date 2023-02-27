@@ -1,19 +1,25 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Labels.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Task.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -1, -4, 0, 0, 0, 0, 1, 800, 0, 0, 0, 0, 802, 799, 0, 0, 0, 0, 799, -1, 0, 0, 0, 0, -1, -4 )
 }
 
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 31, 29, 0, 0, 0, 0, 38, 754, 0, 0, 0, 0, 87, 756, 0, 0, 0, 0, 83, 31, 0, 0, 0, 0, 146, 18, 0, 0, 0, 0, 167, 758, 0, 0, 0, 0, 251, 763, 0, 0, 0, 0, 234, 28, 0, 0, 0, 0, 328, 100, 0, 0, 0, 0, 428, 64, 0, 0, 0, 0, 334, 154, 0, 0, 0, 0, 322, 755, 0, 0, 0, 0, 442, 745, 0, 0, 0, 0, 455, 69, 0, 0, 0, 0, 500, 36, 0, 0, 0, 0, 500, 691, 0, 0, 0, 0, 525, 752, 0, 0, 0, 0, 582, 742, 0, 0, 0, 0, 550, 688, 0, 0, 0, 0, 551, 63, 0, 0, 0, 0, 606, 35, 0, 0, 0, 0, 587, 236, 0, 0, 0, 0, 600, 632, 0, 0, 0, 0, 648, 737, 0, 0, 0, 0, 685, 745, 0, 0, 0, 0, 656, 645, 0, 0, 0, 0, 655, 55, 0, 0, 0, 0, 714, 28, 0, 0, 0, 0, 736, 736, 0, 0, 0, 0, 762, 750, 0, 0, 0, 0, 751, 46, 0, 0, 0, 0, 31, 29 )
+}
+
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
 Mob = ExtResource( 3 )
-time_left = 90
+Task = ExtResource( 5 )
 
 [node name="MobPath" type="Path2D" parent="."]
 curve = SubResource( 1 )
@@ -35,9 +41,21 @@ one_shot = true
 
 [node name="Countdown" type="Timer" parent="."]
 
+[node name="TaskPath" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="TaskSpawnLocations" type="PathFollow2D" parent="TaskPath"]
+position = Vector2( 31, 29 )
+rotation = 1.56114
+
+[node name="TaskTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="start_game" from="Labels" to="." method="_on_Labels_start_game"]
 [connection signal="start_game" from="Labels" to="." method="start_game"]
 [connection signal="hit" from="Player" to="." method="_game_over"]
+[connection signal="taskComplete" from="Player" to="." method="_on_Player_taskComplete"]
 [connection signal="timeout" from="Countdown" to="." method="_on_Countdown_timeout"]
+[connection signal="timeout" from="TaskTimer" to="." method="_on_TaskTimer_timeout"]
