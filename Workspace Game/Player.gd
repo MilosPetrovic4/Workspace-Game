@@ -43,17 +43,15 @@ func _process(delta):
 
 func _on_Area2D_body_entered(body):
 	
-#	if body.get_name() == "CollisionShape2D":
-#		emit_signal("hit")
-#		$CollisionShape2D.disabled = true
-#	elif body.get_name() == "CollisionPolygon2D":
-#		emit_signal("taskComplete")
-
-	
-	
-	if body.get_name() == "Task":
+	if body is StaticBody2D:
 		emit_signal("taskComplete")
-		print(body.get_name() )
+
+	elif body is RigidBody2D:
+		emit_signal("hit")
+		
+	
+		
+		
 		
 
 
