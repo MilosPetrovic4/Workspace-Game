@@ -7,6 +7,8 @@ export var speed = 400 # Player speed
 var screen_size # screensize
 signal hit
 signal taskComplete 
+signal wirelessTask #Wireless 
+signal releaseE #For when player doesn't hold e for the full second
 
 #Runs once
 func _ready():
@@ -33,6 +35,12 @@ func _process(delta):
 	else:
 		#$AnimatedSprite.stop()
 		pass
+		
+	if Input.is_action_just_pressed("wirelessTask"):
+		emit_signal("wirelessTask")
+		
+	if Input.is_action_just_released("wirelessTask"):
+		emit_signal("releaseE")
 
 
 
@@ -50,16 +58,15 @@ func _on_Area2D_body_entered(body):
 		emit_signal("hit")
 		
 	
-		
+#resetting the player
+func startPos(posish):
+	position = posish
+	show()
 		
 		
 
 
-#	if body extends RigidBody2D:
-#		emit_signal("hit")
-#		$CollisionShape2D.disabled = true
-#	elif body extends StaticBody2D:
-#		emit_signal("taskComplete")
+#	
 		
 		
 

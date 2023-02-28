@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Labels.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Task.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Task2.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -20,6 +21,7 @@ _data = {
 script = ExtResource( 1 )
 Mob = ExtResource( 3 )
 Task = ExtResource( 5 )
+Task2 = ExtResource( 6 )
 
 [node name="MobPath" type="Path2D" parent="."]
 curve = SubResource( 1 )
@@ -57,11 +59,22 @@ margin_right = 804.0
 margin_bottom = 799.0
 color = Color( 0.168627, 0.286275, 0.45098, 1 )
 
+[node name="Task2Timer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+
+[node name="Task2Duration" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="hit" from="Player" to="." method="_game_over"]
+[connection signal="releaseE" from="Player" to="." method="_on_Player_releaseE"]
 [connection signal="taskComplete" from="Player" to="." method="_on_Player_taskComplete"]
+[connection signal="wirelessTask" from="Player" to="." method="_on_Player_wirelessTask"]
 [connection signal="start_game" from="Labels" to="." method="_on_Labels_start_game"]
 [connection signal="start_game" from="Labels" to="." method="start_game"]
 [connection signal="timeout" from="Countdown" to="." method="_on_Countdown_timeout"]
 [connection signal="timeout" from="TaskTimer" to="." method="_on_TaskTimer_timeout"]
+[connection signal="timeout" from="Task2Timer" to="." method="_on_Task2Timer_timeout"]
+[connection signal="timeout" from="Task2Duration" to="." method="_on_Task2Duration_timeout"]
