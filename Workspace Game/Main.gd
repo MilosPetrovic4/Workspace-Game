@@ -21,7 +21,7 @@ func _on_MobTimer_timeout():
 	# Creates mob instance
 	var mob = Mob.instance()
 	add_child(mob)
-	# Get 
+	# get direction perpendicular to path
 	var direction = $MobPath/MobSpawnLocations.rotation - PI / 2
 	# mob position
 	mob.position = $MobPath/MobSpawnLocations.position

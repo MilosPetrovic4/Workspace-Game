@@ -36,6 +36,7 @@ wait_time = 90.0
 one_shot = true
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+z_index = 10
 
 [node name="Labels" parent="." instance=ExtResource( 4 )]
 
@@ -50,6 +51,11 @@ rotation = 1.56114
 
 [node name="TaskTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 804.0
+margin_bottom = 799.0
+color = Color( 0.168627, 0.286275, 0.45098, 1 )
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
