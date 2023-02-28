@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Labels.gd" type="Script" id=1]
 [ext_resource path="res://ghostclanoutital.otf" type="DynamicFontData" id=2]
@@ -13,6 +13,10 @@ size = 80
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 80
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
 size = 80
 font_data = ExtResource( 2 )
 
@@ -38,11 +42,19 @@ text = "START"
 
 [node name="Time" type="Label" parent="."]
 margin_left = 8.0
-margin_top = 15.0
+margin_top = 13.0
 margin_right = 186.0
-margin_bottom = 120.0
+margin_bottom = 118.0
 custom_fonts/font = SubResource( 2 )
 align = 1
+
+[node name="Highscore" type="Label" parent="."]
+margin_left = 158.0
+margin_top = 436.0
+margin_right = 651.0
+margin_bottom = 523.0
+custom_fonts/font = SubResource( 4 )
+text = "Highest: 0"
 
 [connection signal="start_game" from="." to="." method="_on_Labels_start_game"]
 [connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]

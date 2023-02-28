@@ -4,6 +4,7 @@ export (PackedScene) var Mob
 export (PackedScene) var Task
 var task
 var score = 0
+var highscore = 0
 export (int) var time_left = 90
 var time = time_left
 
@@ -58,6 +59,8 @@ func start_game():
 	score = 0
 	
 	$TaskTimer.start()
+	
+	$Labels/Highscore.hide()
 
 #When timer runs out or player is hit by enemy
 func _game_over():
@@ -69,6 +72,14 @@ func _game_over():
 	$Labels/Score.hide()
 	$Countdown.stop()
 	task.destroyTask()
+	
+	if score > highscore:
+		highscore = score
+		$Labels.update_highscore(highscore)
+		$Labels/Highscore.show()
+		
+	else:
+		$Labels/Highscore.show()
 
 #every second update timer
 func _on_Countdown_timeout():

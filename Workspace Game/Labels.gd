@@ -3,7 +3,7 @@ extends CanvasLayer
 signal start_game
 
 func _ready():
-	pass # Replace with function body.
+	$Highscore.hide()
 
 #Update score
 func update_score(score):
@@ -18,5 +18,11 @@ func _on_Start_pressed():
 #update time label
 func update_time(time):
 	$Time.text = str(time)
+	
+	
+	
+func update_highscore(high):
+	$Highscore.text = "Highest: "  + str(high)
+
 
 
