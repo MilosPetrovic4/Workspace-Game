@@ -11,13 +11,13 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Task" type="StaticBody2D"]
+[node name="Task" type="StaticBody2D" groups=["tasks"]]
 scale = Vector2( 0.05, 0.05 )
 collision_mask = 0
 script = ExtResource( 2 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." groups=["tasks"]]
 frames = SubResource( 1 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." groups=["tasks"]]
 polygon = PoolVector2Array( -260, 360, 420, -320, 320, -420, -360, 260, -420, 420 )

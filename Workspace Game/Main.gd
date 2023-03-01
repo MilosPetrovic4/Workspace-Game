@@ -23,18 +23,27 @@ func _ready():
 func _on_MobTimer_timeout():
 	 # Choose a random location on the path
 	$MobPath/MobSpawnLocations.set_offset(randi())
-	# Creates mob instance
-	var mob = Mob.instance()
-	add_child(mob)
-	# get direction perpendicular to path
-	var direction = $MobPath/MobSpawnLocations.rotation - PI / 2
-	# mob position
-	mob.position = $MobPath/MobSpawnLocations.position
-	# Make direction random
-	direction += rand_range(-PI / 5, PI / 5)
-	mob.rotation = direction
-	# Velocity
-	mob.set_linear_velocity(Vector2(rand_range(mob.minSpeed, mob.maxSpeed), 0).rotated(direction))
+	
+	for i in range(6):
+		# Creates mob instance
+		var mob = Mob.instance()
+		add_child(mob)
+		# get direction perpendicular to path
+		var direction = $MobPath/MobSpawnLocations.rotation - PI / 2
+		
+		# mob position
+		mob.position = $MobPath/MobSpawnLocations.position
+		# Make direction random
+		mob.rotation = direction
+		# Velocity
+		#var direction = ($Player.global_position - mob.global_position )
+		#var angleTo = mob.transform.x.angle_to(direction)
+		#mob.rotate(sign(angleTo) * min(60 * 100, abs(angleTo)))
+		mob.set_linear_velocity(Vector2(mob.Speed, 0).rotated(direction))
+		$shortTimer.start()
+		yield($shortTimer, "timeout")
+	
+	
 
 #Spawns a task in a random spot 
 func create_task():
@@ -42,13 +51,13 @@ func create_task():
 	task = Task.instance()
 	add_child(task)
 	task.position = $TaskPath/TaskSpawnLocations.position
-	
+
+#Spawns a task of type 2 in random spot
 func create_task2():
 	$TaskPath/TaskSpawnLocations.set_offset(randi() )
 	task2 = Task2.instance()
 	add_child(task2)
 	task2.position = $TaskPath/TaskSpawnLocations.position
-
 
 #When start button is pressed, initializes game (timers, mob spawning, task spawning)
 func start_game():
@@ -82,10 +91,19 @@ func _game_over():
 	$Labels/Time.hide()
 	$Labels/Score.hide()
 	$Countdown.stop()
-	task.destroyTask()
+	#task.destroyTask()
 	
 	if task2Exists == true:
 		task2.destroyTask()
+		
+	var tasks = get_tree().get_nodes_in_group("tasks")
+	for i in tasks:
+		i.queue_free()
+	
+	$shortTimer.stop()
+	var mobs = get_tree().get_nodes_in_group("mobs")
+	for j in mobs:
+		j.queue_free()
 	
 	if score > highscore:
 		highscore = score
@@ -119,7 +137,7 @@ func _on_TaskTimer_timeout():
 	
 
 
-#runs when player presses e
+#runs when player presses shift
 func _on_Player_wirelessTask():
 	
 	#If task exists start 1 second timer

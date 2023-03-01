@@ -56,11 +56,13 @@ func _on_Area2D_body_entered(body):
 
 	elif body is RigidBody2D:
 		emit_signal("hit")
+		$CollisionShape2D.disabled = true
 		
 	
 #resetting the player
 func startPos(posish):
 	position = posish
+	$CollisionShape2D.disabled = false
 	show()
 		
 		

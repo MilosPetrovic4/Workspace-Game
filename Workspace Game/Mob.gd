@@ -1,8 +1,7 @@
 extends RigidBody2D
 
 
-export (int) var maxSpeed = 350
-export (int) var minSpeed = 150
+export (int) var Speed = 350
 
 
 
