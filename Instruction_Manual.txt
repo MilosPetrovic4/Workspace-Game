@@ -8,7 +8,9 @@ School is in session! Highschool is a place where the most unlikely of occurrenc
 How To Play:
 Click the “start game” button.
 Use the arrow keys to move up, down, left and right.
-Complete tasks by walking up to the task which will be represented by a bubble.
+Tasks will pop up in bubbles
+Complete tasks by walking up to the task and ______ to complete it.
+The player must complete all tasks succesfully to win
 
 
 
