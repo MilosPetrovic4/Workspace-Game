@@ -15,7 +15,7 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
 
-onready var animated_sprite = $AnimatedSprite2D
+onready var animated_sprite = $AnimatedSprite
 
 #Runs through continously
 func _process(delta):
