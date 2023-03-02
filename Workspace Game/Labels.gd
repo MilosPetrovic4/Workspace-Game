@@ -7,11 +7,12 @@ func _ready():
 
 #Update score
 func update_score(score):
-	$Score.text = str(score)
+	$Score.text = "Score: " +  str(score)
 
 	
 #Start button	
 func _on_Start_pressed():
+	$StartBell.play()
 	emit_signal("start_game")
 	$Start.hide()
 	

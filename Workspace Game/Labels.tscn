@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Labels.gd" type="Script" id=1]
 [ext_resource path="res://ghostclanoutital.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://ghostclan3d.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Sound Effect - School Bell.mp3" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -55,6 +56,9 @@ margin_right = 651.0
 margin_bottom = 523.0
 custom_fonts/font = SubResource( 4 )
 text = "Highest: 0"
+
+[node name="StartBell" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="start_game" from="." to="." method="_on_Labels_start_game"]
 [connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
