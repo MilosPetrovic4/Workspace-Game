@@ -15,27 +15,17 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
 
-onready var animated_sprite = $AnimatedSprite
-
 #Runs through continously
 func _process(delta):
 	var velocity = Vector2.ZERO # Player movement
 	if Input.is_action_pressed("move_right"):
-		animated_sprite.play("run")
 		velocity.x += 1
-		animated_sprite.stop()
 	if Input.is_action_pressed("move_left"):
-		animated_sprite.play("run")
 		velocity.x -= 1
-		animated_sprite.stop()
 	if Input.is_action_pressed("move_down"):
-		animated_sprite.play("run")
 		velocity.y += 1
-		animated_sprite.stop()
 	if Input.is_action_pressed("move_up"):
-		animated_sprite.play("run")
 		velocity.y -= 1
-		animated_sprite.stop()
 
 	#Normalizes vectors since diagonal vectors are longer than horizontal ones
 	if velocity.length() > 0:
@@ -76,4 +66,5 @@ func startPos(posish):
 		
 #	
 		
+	
 		
