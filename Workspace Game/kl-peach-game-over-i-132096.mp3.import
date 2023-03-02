@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/kl-peach-game-over-i-132096.mp3-45eded8bb1ffb675690023e83cea329c.mp3str"
+
+[deps]
+
+source_file="res://kl-peach-game-over-i-132096.mp3"
+dest_files=[ "res://.import/kl-peach-game-over-i-132096.mp3-45eded8bb1ffb675690023e83cea329c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

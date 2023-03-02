@@ -11,7 +11,6 @@ export (int) var time_left = 90
 var time = time_left
 var task2Exists = false
 var startLocation = Vector2(400,400)
-
 signal task #used for hiding collected tasks
 
 # Called when the node enters the scene tree for the first time.
@@ -61,7 +60,9 @@ func create_task2():
 
 #When start button is pressed, initializes game (timers, mob spawning, task spawning)
 func start_game():
-	
+	$GameOver.stop()
+	#The music used for mid game was taken from pixabay, which is allegedly all free to use
+	$MidGameMusic.play()
 	$Player.startPos(startLocation)
 	$MobTimer.start()
 	$GameTimer.start()
@@ -81,9 +82,11 @@ func start_game():
 	$Task2Timer.start()
 	
 	$Labels/Highscore.hide()
-
 #When timer runs out or player is hit by enemy
 func _game_over():
+	$MidGameMusic.stop()
+	#Sound Effect by Lightyeartraxx from Pixabay
+	$GameOver.play()
 	$MobTimer.stop()
 	$Player.hide()
 	$Labels/Start.show()
@@ -124,6 +127,8 @@ func _on_GameTimer_timeout():
 
 #When player collects a task item
 func _on_Player_taskComplete():
+	#Sound Effect by https://pixabay.com/users/universfield-28281460/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=140376">Universfield</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=140376
+	$TaskCompleteSound.play()
 	score += 1
 	$Labels.update_score(str(score) )
 	
@@ -156,6 +161,7 @@ func _on_Task2Timer_timeout():
 #hold e for 1 second to complete task
 func _on_Task2Duration_timeout():
 	#updates score
+	$TaskCompleteSound.play()
 	score += 3
 	$Labels.update_score(score)
 	

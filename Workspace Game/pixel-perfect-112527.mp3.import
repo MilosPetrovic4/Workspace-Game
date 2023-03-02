@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/pixel-perfect-112527.mp3-d5110b0b3cf5b443701d9c2517f98d1a.mp3str"
+
+[deps]
+
+source_file="res://pixel-perfect-112527.mp3"
+dest_files=[ "res://.import/pixel-perfect-112527.mp3-d5110b0b3cf5b443701d9c2517f98d1a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
