@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Sound Effect - School Bell.mp3-558b04d0df85d319837cb2db9e1ebb58.mp3str"
+
+[deps]
+
+source_file="res://Sound Effect - School Bell.mp3"
+dest_files=[ "res://.import/Sound Effect - School Bell.mp3-558b04d0df85d319837cb2db9e1ebb58.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
