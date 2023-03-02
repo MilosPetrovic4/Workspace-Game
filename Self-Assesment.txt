@@ -1,0 +1,41 @@
+One 2D Sprite 
+2
+Mob.tscn and Playeer.tscn are both 2D sprites
+
+One Sound Effect
+2
+Bell when a task is completed
+
+Moveable Element, controlled by mouse or keyboard (input guide)
+2
+Player.tscn is moveable by the player
+
+Non-player movement, moved by code (continuous or discrete)
+2
+Task bubbles are moved by code
+
+One Collision Shape used for Collision Detection
+2
+Text Bubbles detect collision with Player
+
+One Signal being used (text guide)
+2
+
+
+One basic keyframe Animation (Using an AnimationPlayer)
+2
+Player's arms move when the player moves
+
+One Label (any text label is acceptable)
+2
+
+
+One other Non-Label UI Control (eg.Buttons, Containers, Progress Bars)
+2
+Score counter at the top of the screen.
+
+One Instanced Scene (i.e. your game is not entirely in a single *.tscn file) 
+2
+We have Main.tscn, Mob.tscn, Player.tscn etc.
+
+Total Grade /20
