@@ -8,9 +8,10 @@ School is in session! Highschool is a place where the most unlikely of occurrenc
 How To Play:
 Click the “start game” button.
 Use the arrow keys to move up, down, left and right.
-Tasks will pop up in bubbles
-Complete tasks by walking up to the task and ______ to complete it.
-The player must complete all tasks succesfully to win
+2 Types of tasks will appear
+The pencil task is Completed by walking up to it.
+The Math task is completed by holding shift for 1 second (you do not have to be near it).
+Complete as many tasks as you can in the 90 seconds
 
 
 
